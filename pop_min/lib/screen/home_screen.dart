@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
+  String? gesture;
 
   AudioPlayer? _player;
 
@@ -42,9 +43,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onTapUp() {
     setState(() {
-      // counter++;
       touch = true;
-      print("_onTapUp");
+    });
+    print("_onTapUp");
+  }
+
+  void _onTapCancel(){
+    setState(() {
+      touch = true;
+      print("_onTapCancel");
+
+      gesture = 'smile';
+    });
+
+    print('제스쳐$gesture');
+  }
+
+
+  void _onLongPress(){
+    setState((){
+      // touch = false;
+      print("_onDoubleTap");
+
+      gesture = 'sad';
     });
   }
 
@@ -57,15 +78,18 @@ class _HomeScreenState extends State<HomeScreen> {
       prefs.setInt('counter', counter);
       touch = false;
       print("_onTapDown");
+
+      // gesture 초기화 - 하지 않으면 계속 웃는 얼굴임
+      gesture = null;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.blue[100],
       body: SafeArea(
-        child: GestureDetector(
+        child: InkWell(
           onTapUp: (TapUpDetails) {
             _onTapUp();
           },
@@ -73,17 +97,19 @@ class _HomeScreenState extends State<HomeScreen> {
             _onTapDown();
           },
           onTapCancel: () {
-            _onTapUp();
-            print("onTapcancel");
+            _onTapCancel();
           },
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _TopPart(counter: counter),
-                _BottomPart(touch: touch),
-              ],
+
+          child: GestureDetector(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _TopPart(counter: counter),
+                  _BottomPart(touch: touch, counter: counter, gesture: gesture),
+                ],
+              ),
             ),
           ),
         ),
@@ -94,15 +120,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class _BottomPart extends StatelessWidget {
   final bool touch;
+  final int counter;
+  final String? gesture;
 
   const _BottomPart({
     required this.touch,
+    required this.counter,
+    required this.gesture,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String name;
+    String? name;
+    String? version;
+
+    print(gesture);
+    if (gesture != null) {
+      version = gesture;
+    } else if (gesture == null) {
+      version = '01';
+
+      if (counter % 10 == 0) {
+        version = '03';
+      }
+
+      if (counter % 100 == 0) {
+        version = '02';
+      }
+    }
+
     if (touch) {
       name = 'close';
     } else {
@@ -111,7 +158,7 @@ class _BottomPart extends StatelessWidget {
 
     return Expanded(
       flex: 4,
-      child: Image.asset('assets/img/$name.png'),
+      child: Image.asset('assets/img/$version$name.png'),
     );
   }
 }
@@ -129,7 +176,7 @@ class _TopPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '꿀호떡',
+            '최민환',
             style: TextStyle(
               fontFamily: 'Jua',
               fontSize: 30.0,

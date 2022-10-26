@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
   HomeScreen({
     required this.color,
     Key? key,
-  }) : super(key: key){
+  }) : super(key: key) {
     print('Widget Constructor 실행!');
   }
 
@@ -18,12 +18,12 @@ class HomeScreen extends StatefulWidget {
     print("createState 실행!");
     return _HomeScreenState();
   }
-
 }
 
 // state는 재사용하는데 constructure는 한번만 불리기때문에 생성자로 color를 지정하면 안된다.
 // wiget이라는 키워드를 사용하여 statefulWidget의 요소를 가져올 수 있다.
 class _HomeScreenState extends State<HomeScreen> {
+  int number = 0;
 
   @override
   void initState() {
@@ -42,17 +42,27 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     print('build 실행!');
-    return Container(
-      width: 50.0,
-      height: 50.0,
-      color: widget.color,
+    return GestureDetector(
+      onTap: (){
+        setState((){
+          number ++;
+        });
+      },
+      child: Container(
+        width: 50.0,
+        height: 50.0,
+        color: widget.color,
+        child: Center(
+          child: Text(number.toString()),
+        ),
+      ),
     );
   }
 
   // clean 상태로 돌아감
 
   // 삭제할 때
-@override
+  @override
   void deactivate() {
     print('deactivate 실행!');
     super.deactivate();
