@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -48,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     print("_onTapUp");
   }
 
-  void _onTapCancel(){
+  void _onTapCancel() {
     setState(() {
       touch = true;
       print("_onTapCancel");
@@ -56,14 +58,13 @@ class _HomeScreenState extends State<HomeScreen> {
       gesture = 'smile';
     });
 
-    print('제스쳐$gesture');
+    // print('제스쳐$gesture');
   }
 
-
-  void _onLongPress(){
-    setState((){
-      // touch = false;
-      print("_onDoubleTap");
+  void _onLongPress() {
+    setState(() {
+      touch = true;
+      print("_onLongPress");
 
       gesture = 'sad';
     });
@@ -99,6 +100,10 @@ class _HomeScreenState extends State<HomeScreen> {
           onTapCancel: () {
             _onTapCancel();
           },
+          // onLongPress: () {
+          //   _onLongPress();
+          // },
+
 
           child: GestureDetector(
             child: Container(
@@ -135,18 +140,17 @@ class _BottomPart extends StatelessWidget {
     String? name;
     String? version;
 
-    print(gesture);
     if (gesture != null) {
       version = gesture;
     } else if (gesture == null) {
       version = '01';
 
       if (counter % 10 == 0) {
-        version = '03';
+        version = '02';
       }
 
       if (counter % 100 == 0) {
-        version = '02';
+        version = '03';
       }
     }
 
