@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Color.fromRGBO(194, 211, 242, 1),
       body: SafeArea(
         child: InkWell(
           onTapUp: (TapUpDetails) {
@@ -178,11 +178,11 @@ class _TopPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '최민환',
+            'Eckhart Wolfgang',
             style: TextStyle(
               fontFamily: 'Jua',
               fontSize: 30.0,
-              color: Colors.black54,
+              color: Color.fromRGBO(64, 64, 64, 1),
             ),
           ),
           Text(
@@ -190,7 +190,7 @@ class _TopPart extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Jua',
               fontSize: 18.0,
-              color: Colors.black54,
+              color: Color.fromRGBO(64, 64, 64, 1),
             ),
           )
         ],

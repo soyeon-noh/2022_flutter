@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
-  String? gesture;
 
   AudioPlayer? _player;
 
@@ -52,19 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       touch = true;
       print("_onTapCancel");
-
-      gesture = 'smile';
-    });
-
-    // print('제스쳐$gesture');
-  }
-
-  void _onLongPress() {
-    setState(() {
-      touch = true;
-      print("_onLongPress");
-
-      gesture = 'sad';
     });
   }
 
@@ -77,16 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
       prefs.setInt('counter', counter);
       touch = false;
       print("_onTapDown");
-
-      // gesture 초기화 - 하지 않으면 계속 웃는 얼굴임
-      gesture = null;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: InkWell(
           onTapUp: (TapUpDetails) {
@@ -98,11 +81,6 @@ class _HomeScreenState extends State<HomeScreen> {
           onTapCancel: () {
             _onTapCancel();
           },
-          // onLongPress: () {
-          //   _onLongPress();
-          // },
-
-
           child: GestureDetector(
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -110,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _TopPart(counter: counter),
-                  _BottomPart(touch: touch, counter: counter, gesture: gesture),
+                  _BottomPart(counter: counter),
                 ],
               ),
             ),
@@ -122,45 +100,28 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _BottomPart extends StatelessWidget {
-  final bool touch;
   final int counter;
-  final String? gesture;
 
   const _BottomPart({
-    required this.touch,
     required this.counter,
-    required this.gesture,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String? name;
-    String? version;
+    double? version;
 
-    if (gesture != null) {
-      version = gesture;
-    } else if (gesture == null) {
-      version = '01';
+    version = counter / 100;
 
-      if (counter % 10 == 0) {
-        version = '02';
-      }
-
-      if (counter % 100 == 0) {
-        version = '03';
-      }
+    if (counter > 1000) {
+      version = version % 10;
     }
 
-    if (touch) {
-      name = 'close';
-    } else {
-      name = 'open';
-    }
+    print(version);
 
     return Expanded(
       flex: 4,
-      child: Image.asset('assets/img/$version$name.png'),
+      child: Image.asset('assets/img/${version.toInt()}.png'),
     );
   }
 }
@@ -178,18 +139,10 @@ class _TopPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '최민환',
-            style: TextStyle(
-              fontFamily: 'Jua',
-              fontSize: 30.0,
-              color: Colors.black54,
-            ),
-          ),
-          Text(
             '$counter',
             style: TextStyle(
               fontFamily: 'Jua',
-              fontSize: 18.0,
+              fontSize: 30.0,
               color: Colors.black54,
             ),
           )
