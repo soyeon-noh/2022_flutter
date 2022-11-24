@@ -13,19 +13,18 @@ class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
   String? gesture;
-  String name = 'Mercedes Aquila';
-  Color nameColor = Color(0xff202020);
+  String name = '많이 예뻐해주세요~';
+  Color nameColor = Color.fromRGBO(122, 208, 171, 1);
   Color backgroundColor = Color(0xff647476);
-  BoxDecoration? gradientBoxDecoration = null;
-  // BoxDecoration(
-  //     gradient: LinearGradient(
-  //       colors: [
-  //         Color.fromRGBO(157, 236, 237, 1),
-  //         Color.fromRGBO(176, 239, 226, 1),
-  //       ],
-  //       begin: Alignment.topCenter,
-  //       end: Alignment.bottomRight,
-  //     ));
+  BoxDecoration? gradientBoxDecoration = BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromRGBO(157, 236, 237, 1),
+      Color.fromRGBO(176, 239, 226, 1),
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomRight,
+  ));
 
   AudioPlayer? _player;
 
@@ -123,7 +122,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _TopPart(counter: counter, name: name, nameColor: nameColor,),
+                    _TopPart(
+                      counter: counter,
+                      name: name,
+                      nameColor: nameColor,
+                    ),
                     _BottomPart(
                         touch: touch, counter: counter, gesture: gesture),
                   ],

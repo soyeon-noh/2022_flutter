@@ -13,18 +13,19 @@ class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
   String? gesture;
-  String name = '더 쓰다듬어줘!';
-  Color nameColor = Color.fromRGBO(97, 179, 214, 1);
-  Color backgroundColor = Color.fromRGBO(236, 236, 236, 1);
-  BoxDecoration? gradientBoxDecoration = BoxDecoration(
-      gradient: LinearGradient(
-    colors: [
-      Color.fromRGBO(157, 236, 237, 1),
-      Color.fromRGBO(176, 239, 226, 1),
-    ],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomRight,
-  ));
+  String name = 'Lelietje Dalen';
+  Color nameColor = Color(0xff454D96);
+  Color backgroundColor = Color(0xffF1FF98);
+  BoxDecoration? gradientBoxDecoration = null;
+  // BoxDecoration(
+  //     gradient: LinearGradient(
+  //   colors: [
+  //     Color.fromRGBO(157, 236, 237, 1),
+  //     Color.fromRGBO(176, 239, 226, 1),
+  //   ],
+  //   begin: Alignment.topCenter,
+  //   end: Alignment.bottomRight,
+  // ));
 
   AudioPlayer? _player;
 

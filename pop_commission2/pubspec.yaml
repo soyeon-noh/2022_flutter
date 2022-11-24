@@ -39,7 +39,7 @@ dependencies:
   audioplayers: ^1.1.1
 
 flutter_launcher_name:
-  name: 'Mercedes'
+  name: '오오가미 란카'
 
 dev_dependencies:
   flutter_test:
