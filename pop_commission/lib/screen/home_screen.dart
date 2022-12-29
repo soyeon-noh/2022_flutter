@@ -13,15 +13,15 @@ class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
   String? gesture;
-  String name = 'Lelietje Dalen';
-  Color nameColor = Color(0xff454D96);
-  Color backgroundColor = Color(0xffF1FF98);
+  String name = '상운';
+  Color nameColor = Colors.brown[800]!;
+  Color backgroundColor = Color(0xffdac5a8);
   BoxDecoration? gradientBoxDecoration = null;
   // BoxDecoration(
   //     gradient: LinearGradient(
   //   colors: [
-  //     Color.fromRGBO(157, 236, 237, 1),
-  //     Color.fromRGBO(176, 239, 226, 1),
+  //     Color(0xffEBDDCC),
+  //     Color(0xffD0AB8F),
   //   ],
   //   begin: Alignment.topCenter,
   //   end: Alignment.bottomRight,

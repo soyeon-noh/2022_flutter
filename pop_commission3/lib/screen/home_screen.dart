@@ -13,9 +13,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
   String? gesture;
-  String name = 'Lelietje Dalen';
-  Color nameColor = Color(0xff454D96);
-  Color backgroundColor = Color(0xffF1FF98);
+  String name = '선택지는 마구 쓰다듬기!';
+  Color nameColor = Color.fromRGBO(178, 229, 240, 1);
+  Color backgroundColor = Color.fromRGBO(80, 163, 192, 1);
   BoxDecoration? gradientBoxDecoration = null;
   // BoxDecoration(
   //     gradient: LinearGradient(

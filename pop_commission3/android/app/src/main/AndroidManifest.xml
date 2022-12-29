@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.commission3.pop_commission3">
    <application
-        android:label="Lelietje"
+        android:label="이청솔"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
