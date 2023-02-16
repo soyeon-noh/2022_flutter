@@ -13,10 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
   String? gesture;
-  String name = '상운';
-  Color nameColor = Colors.brown[800]!;
-  Color backgroundColor = Color(0xffdac5a8);
-  BoxDecoration? gradientBoxDecoration = null;
+  String name = '레나드를 눌러주세요!';
+  Color nameColor = const Color(0xffA3815A);
+  Color backgroundColor = const Color(0xffFFDFDF);
+  BoxDecoration? gradientBoxDecoration;
   // BoxDecoration(
   //     gradient: LinearGradient(
   //   colors: [
@@ -118,12 +118,16 @@ class _HomeScreenState extends State<HomeScreen> {
             // },
 
             child: GestureDetector(
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _TopPart(counter: counter, name: name, nameColor: nameColor,),
+                    _TopPart(
+                      counter: counter,
+                      name: name,
+                      nameColor: nameColor,
+                    ),
                     _BottomPart(
                         touch: touch, counter: counter, gesture: gesture),
                   ],
@@ -186,7 +190,7 @@ class _TopPart extends StatelessWidget {
   final String name;
   final Color nameColor;
 
-  _TopPart({
+  const _TopPart({
     required this.counter,
     required this.name,
     required this.nameColor,
@@ -201,7 +205,7 @@ class _TopPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '$name',
+            name,
             style: TextStyle(
               fontFamily: 'Jua',
               fontSize: 30.0,
