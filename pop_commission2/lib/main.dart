@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pop_commission2/screen/HomeScreen.dart';
+import 'package:pop_commission2/screen/home_screen.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     ),

@@ -13,18 +13,19 @@ class _HomeScreenState extends State<HomeScreen> {
   int counter = 0;
   bool touch = false;
   String? gesture;
-  String name = '많이 예뻐해주세요~';
-  Color nameColor = Color.fromRGBO(122, 208, 171, 1);
-  Color backgroundColor = Color(0xff647476);
-  BoxDecoration? gradientBoxDecoration = BoxDecoration(
-      gradient: LinearGradient(
-    colors: [
-      Color.fromRGBO(157, 236, 237, 1),
-      Color.fromRGBO(176, 239, 226, 1),
-    ],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomRight,
-  ));
+  String name = 'poppy';
+  Color nameColor = Colors.white;
+  Color backgroundColor = const Color.fromRGBO(246, 202, 132, 1);
+  BoxDecoration? gradientBoxDecoration;
+  // const BoxDecoration(
+  //     gradient: LinearGradient(
+  //   colors: [
+  //     Color.fromRGBO(157, 236, 237, 1),
+  //     Color.fromRGBO(176, 239, 226, 1),
+  //   ],
+  //   begin: Alignment.topCenter,
+  //   end: Alignment.bottomRight,
+  // ));
 
   AudioPlayer? _player;
 
@@ -117,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // },
 
             child: GestureDetector(
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -189,7 +190,7 @@ class _TopPart extends StatelessWidget {
   final String name;
   final Color nameColor;
 
-  _TopPart({
+  const _TopPart({
     required this.counter,
     required this.name,
     required this.nameColor,
@@ -204,7 +205,7 @@ class _TopPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '$name',
+            name,
             style: TextStyle(
               fontFamily: 'Jua',
               fontSize: 30.0,

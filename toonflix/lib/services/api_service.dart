@@ -20,6 +20,8 @@ class ApiService {
       // print(response.body);
 
       final List<dynamic> webtoons = jsonDecode(response.body);
+      print('여기보세요 ');
+      print(webtoons);
 
       for (var webtoon in webtoons) {
         final toon = WebtoonModel.fromJson(webtoon);

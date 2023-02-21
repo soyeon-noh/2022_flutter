@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kodeongee.ctwo.pop_commission2">
    <application
-        android:label="오오가미 란카"
+        android:label="poppy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
